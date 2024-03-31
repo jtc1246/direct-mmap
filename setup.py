@@ -8,13 +8,18 @@ if not sys.platform.startswith('linux'):
 if platform.machine() != 'x86_64':
     raise Exception("This package can only be installed on Linux x86_64 systems.")
 
+with open("README.md", "r") as f:
+    long_description = f.read()
+
 setup(
     name='direct_mmap',
-    version='1.0.0',
+    version='1.0.1',
     author='Tiancheng Jiao',
     author_email='jtc1246@outlook.com',
     url='https://github.com/jtc1246/direct-mmap',
     description='Numpy memory-mapped array with direct I/O. No sequential read caching, increase the speed of random read.',
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     packages=['direct_mmap'],
     package_data={
         'direct_mmap': ['cpp/*.so', 'cpp/*.pyi', 'cpp/*.cpp', 'cpp/Makefile', 'Makefile']
